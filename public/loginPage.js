@@ -18,20 +18,10 @@ userForm.loginFormCallback = data => {
 
 userForm.registerFormCallback = data => {
     ApiConnector.register(data, response => {
-
-        console.log(response);
-
-
-        if (Object.keys(response).length == 0) {
-            location.reload();
-          } else {
-            registerForm.setRegisterErrorMessage(response.data);
-          }
-
-
-
-    })
-
-
-
+      if (response.success) {
+        location.reload();
+      } else {
+        userForm.setRegisterErrorMessage(response.data);
+      }
+    });
 }
